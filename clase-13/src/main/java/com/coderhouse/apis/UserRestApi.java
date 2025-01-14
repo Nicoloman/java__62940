@@ -5,7 +5,13 @@ import java.util.List;
 import com.coderhouse.intefaces.UserRestInterface;
 import com.coderhouse.models.User;
 
-public class UserRestApi implements UserRestInterface{
+@Component
+public class UserRestApi implements UserRestInterface {
+
+	private final String BASE_URL = "https://6785a8b7f80b78923aa422c4.mockapi.io/users";
+
+	@Autowired
+	private RestTemplate restTemplate;
 
 	@Override
 	public List<User> getAllUsers() {
