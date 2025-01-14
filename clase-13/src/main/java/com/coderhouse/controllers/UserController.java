@@ -1,5 +1,6 @@
 package com.coderhouse.controllers;
 
+import com.coderhouse.models.User;
 import com.coderhouse.services.UserService;
 
 @RestController
@@ -49,6 +50,7 @@ public responseEntity<User> createUser(@RequestBody User user){
 @PutMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 public responseEntity<User> updateUser(@RequestBody User user){
     try {
+        user.setId(id);
         User updatedUser = userService.updateUser(user);
         return updatedUser != null ? ResponseEntity.ok(updatedUser) : ResponseEntity.notFound().build();
     } catch (IllegalArgumentException e) {
